@@ -169,15 +169,7 @@ STATIC_URL = "static/"
 #swagger  connect  
 
 
-# SWAGGER_SETTINGS = {
-#     'SECURITY_DEFINITIONS': {
-#         'Bearer': {
-#             'type': 'apiKey',
-#             'name': 'Authorization',
-#             'in': 'header'
-#         }
-#     }
-# }
+
 SWAGGER_SETTINGS = {
 
     'USE_SESSION_AUTH': False,
