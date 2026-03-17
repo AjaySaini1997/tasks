@@ -1,0 +1,33 @@
+from django.contrib.auth.models import User
+from rest_framework import serializers
+
+
+class RegisterSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True, min_length=6)
+    password2 = serializers.CharField(write_only=True, label="Confirm Password")
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'password', 'password2', 'is_staff']
+        read_only_fields = ['id', 'is_staff']
+
+    def validate(self, data):
+        if data['password'] != data['password2']:
+            raise serializers.ValidationError({"password": "Passwords do not match."})
+        return data
+
+    def create(self, validated_data):
+        validated_data.pop('password2')
+        user = User.objects.create_user(**validated_data)
+        return user
+
+
+class UserSerializer(serializers.ModelSerializer):
+    role = serializers.SerializerMethodField()
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'role', 'date_joined']
+
+    def get_role(self, obj):
+        return 'admin' if obj.is_staff else 'user'

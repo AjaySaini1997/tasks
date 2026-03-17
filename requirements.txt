@@ -1,0 +1,36 @@
+Yeh ek **complete Task Manager API** project hai Django + JWT + Swagger + Tests ke saath! Sabhi files bana raha hoon. 🚀Saari **16 files** ready hain! 🎉 Yahan complete summary hai:
+
+---
+
+## ✅ Kya Kya Bana
+
+### Files
+| File | Kya karta hai |
+|------|---------------|
+| `models.py` | Task model (id, title, description, completed, priority, timestamps) |
+| `views.py` | CRUD endpoints with Swagger docs |
+| `serializers.py` | Input/output validation |
+| `filters.py` | completed, priority, title se filter |
+| `permissions.py` | Owner ya Admin hi edit/delete kar sakta hai |
+| `tests.py` | 15+ unit tests |
+| `users/` | Register, Login, Profile, Logout |
+| `README.md` | Full documentation |
+
+---
+
+## 🚀 Chalane ke Steps
+
+```bash
+pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
+python manage.p
+
+Django==4.2.7
+djangorestframework==3.14.0
+djangorestframework-simplejwt==5.3.0
+drf-yasg==1.21.7
+django-filter==23.3
+pytest==7.4.3
+pytest-django==4.7.0
+coverage==7.3.2
